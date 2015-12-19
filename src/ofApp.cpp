@@ -15,7 +15,7 @@ void ofApp::setup(){
      BingoCard.add(record.set("record", true));
     ofSetLineWidth(5);
     
-    fbo.allocate(2550, 2550+height, GL_RGBA);
+    fbo.allocate(2550, 2550+height, GL_RGB);
     fbo.begin();
     ofClear(0, 0, 0);
     fbo.end();
