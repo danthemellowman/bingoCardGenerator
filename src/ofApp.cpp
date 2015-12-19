@@ -91,7 +91,7 @@ void ofApp::makeBingoCard(){
         }
         ofNoFill();
         ofSetRectMode(OF_RECTMODE_CENTER);
-        ofDrawRectangle(x+lineWidth/2, y+lineWidth/2, width-lineWidth*2, height-lineWidth*2);
+        ofDrawRectangle(x, y, width, height);
         if(i%2 == 1){
             ofSetColor(255, 255, 0);
         }else{
