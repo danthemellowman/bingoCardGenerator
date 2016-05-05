@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "DB20A6E4B01CF34FC4D3AF4EBCA31F2F8F4BF0D8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8A0B4DF62598EEBDB695BF9A9111ED968C4DCC48" : 0,
+    "7D7EC3C29EF79929D82563AF7E4C175E0FC52A89" : 0,
+    "DB20A6E4B01CF34FC4D3AF4EBCA31F2F8F4BF0D8" : 0,
+    "2DE9C8846D9375EAACFABA8963120E8E7719BAF5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6B3CF456-123C-4DA4-9C3E-C06A5B42329D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8A0B4DF62598EEBDB695BF9A9111ED968C4DCC48" : "..\/..\/addons\/ofxAssetManager",
+    "7D7EC3C29EF79929D82563AF7E4C175E0FC52A89" : "..\/..\/addons\/ofxTextSuite",
+    "DB20A6E4B01CF34FC4D3AF4EBCA31F2F8F4BF0D8" : "BingoCardGenerator\/",
+    "2DE9C8846D9375EAACFABA8963120E8E7719BAF5" : "..\/.."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BingoCardGenerator",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BingoCardGenerator.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/openframeworks\/openFrameworks.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2DE9C8846D9375EAACFABA8963120E8E7719BAF5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/yesyesnono\/ofxTextSuite.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7D7EC3C29EF79929D82563AF7E4C175E0FC52A89"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cwhitney\/ofxAssetManager.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8A0B4DF62598EEBDB695BF9A9111ED968C4DCC48"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/danthemellowman\/bingoCardGenerator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DB20A6E4B01CF34FC4D3AF4EBCA31F2F8F4BF0D8"
+    }
+  ]
+}
