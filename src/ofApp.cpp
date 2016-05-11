@@ -11,9 +11,14 @@ void ofApp::setup(){
         words.push_back(foo);
     }
     
+    BingoCard.setName("ITPGO!");
     BingoCard.add(lineWidth.set("lineWidth", 3, 1, 10));
-     BingoCard.add(record.set("record", true));
-    ofSetLineWidth(5);
+    BingoCard.add(record.set("record", true));
+    BingoCard.add(bMakeCards.set("bMakeCards", false));
+    panel.setup(BingoCard);
+    
+    
+    
     
     fbo.allocate(2550, 2550+height, GL_RGB);
     fbo.begin();
@@ -28,19 +33,28 @@ void ofApp::setup(){
     for(auto key : list){
         wordlist.push_back(key);
     }
-    
+    makeBingoCard();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    makeBingoCard();
+    if(bMakeCards){
+        makeBingoCard();
+    }else{
+        count = 0;
+    }
+    if(count >= 100){
+        ofExit();
+    }
 }
 
 void ofApp::makeBingoCard(){
-    used.clear();
+    
+//    used.clear();
+    ofSetLineWidth(lineWidth);
     for(int i = 0; i < words.size(); i++){
         if(i < 5){
-            words[i].init("edunline.ttf", 200);
+            words[i].init(ofToDataPath("fonts/Chandstate.otf"), 250);
             switch(i){
                 case 0:
                     words[i].setText("I");
@@ -59,7 +73,7 @@ void ofApp::makeBingoCard(){
                     break;
                     
             }
-            words[i].wrapTextX(width);
+            words[i].wrapTextX((width-40));
         }else{
             ofSeedRandom();
             string random = wordlist[((int)ofRandom(wordlist.size()-1))%wordlist.size()];
@@ -67,13 +81,13 @@ void ofApp::makeBingoCard(){
                 random = wordlist[((int)ofRandom(wordlist.size()))%wordlist.size()];
             }
             used.push_back(random);
-            words[i].init("edunline.ttf", 42);
+            words[i].init(ofToDataPath("fonts/orbitron/Orbitron-Medium.ttf"), 45);
             if(i != 12+5){
-                words[i].setText(random);
+                words[i].setText(ofToLower(random));
             }else{
-                words[i].setText("I.T.P.");
+                words[i].setText(" I. T. P.!!! ");
             }
-            words[i].wrapTextX(width*0.85);
+            words[i].wrapTextX((width-40)*0.85);
         }
     }
     fbo.begin();
@@ -83,21 +97,46 @@ void ofApp::makeBingoCard(){
     ofDrawRectangle(0, 0, fbo.getWidth(), fbo.getHeight());
     int x = width/2;
     int y = height/2;
-    for(int i = 0; i < words.size(); i++){
-        if(i%2 == 0){
-            ofSetColor(255, 255, 0);
+    
+    for(int i = 0; i < 5; i++){
+        if(i%2 == 1){
+            ofSetColor(33, 161, 255);
         }else{
-            ofSetColor(255, 0, 255);
+            ofSetColor(55, 104, 140);
         }
-        ofNoFill();
+        words[i].drawCenter(x,(height-words[i].getHeight())/2);
+        x+=width;
+        if(x >= fbo.getWidth()){
+            x = width/2;
+            y+=height;
+        }
+    }
+    
+    for(int i = 5; i < words.size(); i++){
+        
+        ofFill();
+        if(i%2 == 0){
+            ofSetColor(33, 161, 255);
+        }else{
+            ofSetColor(55, 104, 140);
+        }
         ofSetRectMode(OF_RECTMODE_CENTER);
         ofDrawRectangle(x, y, width, height);
         if(i%2 == 1){
-            ofSetColor(255, 255, 0);
+            ofSetColor(33, 161, 255);
         }else{
-            ofSetColor(255, 0, 255);
+            ofSetColor(55, 104, 140);
         }
-        words[i].drawCenter(x, y-words[i].getHeight()/2);
+        ofSetColor(0, 0, 0);
+        ofDrawRectangle(x, y, width-20, height-20);
+        
+        if(i%2 == 1){
+            ofSetColor(33, 161, 255);
+        }else{
+            ofSetColor(55, 104, 140);
+        }
+        words[i].drawCenter(x,y-words[i].getHeight()/2);
+        
         x+=width;
         if(x >= fbo.getWidth()){
             x = width/2;
@@ -108,24 +147,29 @@ void ofApp::makeBingoCard(){
     
     
     if(record){
-
+        
         fbo.getTexture().copyTo(pixelBufferBack);
         pixelBufferFront.bind(GL_PIXEL_UNPACK_BUFFER);
         unsigned char * p = pixelBufferFront.map<unsigned char>(GL_READ_ONLY);
         pixels.setFromExternalPixels(p,fbo.getWidth(),fbo.getHeight(),OF_PIXELS_RGB);
-        ofSaveImage(pixels,"ITPGO-"+ofToString(ofGetFrameNum())+".jpg");
+        ofSaveImage(pixels,"ITPGO-"+ofToString(count)+".jpg");
         pixelBufferFront.unmap();
         swap(pixelBufferBack,pixelBufferFront);
+        count++;
     }
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofBackground(0, 0, 0);
+    ofPushStyle();
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofSetColor(255, 255, 255);
     fbo.draw(0, 0, ofGetWindowWidth(), ofGetWindowWidth()*fbo.getHeight()/fbo.getWidth());
     
+    panel.draw();
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------

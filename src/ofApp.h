@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxTextSuite.h"
+#include "ofxGui.h"
 class ofApp : public ofBaseApp{
     
 public:
@@ -21,6 +22,9 @@ public:
     ofParameterGroup BingoCard;
     ofParameter<float> lineWidth;
     ofParameter<bool> record;
+    ofParameter<bool> bMakeCards;
+    ofxPanel panel;
     vector<string> wordlist;
     vector<string> used;
+    int count;
 };
